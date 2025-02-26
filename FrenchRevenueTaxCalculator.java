@@ -2,9 +2,11 @@ package javacore.chapter02.condition.exercise;
 
 public class FrenchRevenueTaxCalculator {
     public static void main(String[] args) {
-        double salary = 1000000;
-        double abattement =salary -( salary * 0.10);
-        double initialSalaryOfComparaison = abattement;
+        // value to be tested : 10000 / 25000 / 50000 / 100000 / 250000
+        double taxableNetSalary = 1000000;
+        // annual french abattement 10% net imposable salary
+        double taxableBaseReduced = taxableNetSalary - (taxableNetSalary * 0.10);
+        double taxableBase = taxableBaseReduced;
         double trancheImposable = 0;
         double soldImpot =0 ;
         double countImpot= 0;
@@ -22,58 +24,49 @@ public class FrenchRevenueTaxCalculator {
          */
 
 
-         if(abattement > 177106 ){
-             trancheImposable =  (abattement - 177106) ;
+         if(taxableBaseReduced > 177106 ){
+             trancheImposable =  (taxableBaseReduced - 177106) ;
              soldImpot =  (trancheImposable* 0.45);
-             abattement = abattement - trancheImposable;
+             taxableBaseReduced = taxableBaseReduced - trancheImposable;
              countImpot += soldImpot;
-
-             System.out.println(countImpot  +" le cumule des  impots paye ");
-             System.out.println(soldImpot +" impot paye par tranche");
-             System.out.println(abattement+"euros 45%");
+             System.out.println("NOM_FICHE : FrenchRenueTaxCalculator - Fianacial Module Taxe - tranche > 177106 (45%) "+ trancheImposable+" euros / impot : "+soldImpot+" euros");
              System.out.println("--------------------------");
          }
-         if(abattement <= 177106 &&  abattement >=  82342 ){
-             trancheImposable =  (abattement - 82342) ;
+         if(taxableBaseReduced <= 177106 &&  taxableBaseReduced >=  82342 ){
+             trancheImposable =  (taxableBaseReduced - 82342) ;
              soldImpot =  (trancheImposable* 0.41);
-             abattement = abattement - trancheImposable;
+             taxableBaseReduced = taxableBaseReduced - trancheImposable;
              countImpot += soldImpot;
-
-             System.out.println(countImpot  +" le cumule des  impots paye ");
-             System.out.println(soldImpot +" impot paye par tranche");
-
-             System.out.println(abattement+"euros 30%");
+             System.out.println("NOM_FICHE : FrenchRenueTaxCalculator - Fianacial Module Taxe - tranche <  177106 (41%) "+ trancheImposable+" euros / impot : "+soldImpot+" euros");
              System.out.println("--------------------------");
          }
-        if(abattement <= 82342 &&  abattement >=  28798  ){
-            trancheImposable =  (abattement - 28798) ;
+        if(taxableBaseReduced <= 82342 &&  taxableBaseReduced >=  28798  ){
+            trancheImposable =  (taxableBaseReduced - 28798) ;
             soldImpot =  (trancheImposable* 0.30);
-            abattement = abattement - trancheImposable;
+            taxableBaseReduced = taxableBaseReduced - trancheImposable;
             countImpot += soldImpot;
 
-            System.out.println(countImpot  +" le cumule des  impots paye ");
-            System.out.println(soldImpot+" impot paye par tranche");
-            System.out.println(abattement+"euros 30%");
+            System.out.println("NOM_FICHE : FrenchRenueTaxCalculator tranche - Fianacial Module Taxe - < 82342 (30%) "+ trancheImposable+" euros / impot : "+soldImpot+" euros");
+
             System.out.println("--------------------------");
         }
-        if(abattement <= 28798 &&  abattement >= 11295   ){
-            trancheImposable =  (abattement - 11295) ;
+        if(taxableBaseReduced <= 28798 &&  taxableBaseReduced >= 11295   ){
+            trancheImposable =  (taxableBaseReduced - 11295) ;
             soldImpot =  (trancheImposable* 0.11);
-            abattement = abattement - trancheImposable;
+            taxableBaseReduced = taxableBaseReduced - trancheImposable;
             countImpot += soldImpot;
 
-            System.out.println(countImpot +" le cumule des  impots paye " );
-            System.out.println(soldImpot);
-            System.out.println(abattement+"euros 11%");
-            System.out.println("--------------------------");
-        }
-        if(abattement <= 11295 &&  abattement >=  0  ){
+            System.out.println("NOM_FICHE : FrenchRenueTaxCalculator - Fianacial Module Taxe - tranche < 28798 (11%) "+ trancheImposable+" euros / impot : "+soldImpot+" euros");
 
-            System.out.println("tu ne payes pas d'impot sur le revenu sur cette tranche");
             System.out.println("--------------------------");
         }
-        System.out.println(countImpot +" euros total paye des  impots paye " );
-        System.out.println("le pourcentage d'impot paye en total "+((countImpot/initialSalaryOfComparaison)*100) +"%");
+        if(taxableBaseReduced <= 11295 &&  taxableBaseReduced >=  0  ){
+
+            System.out.println("NOM_FICHE : FrenchRenueTaxCalculator - Fianacial Module Taxe - tu ne payes pas d'impot sur le revenu sur cette tranche");
+            System.out.println("--------------------------");
+        }
+        System.out.println("NOM_FICHE : FrenchRenueTaxCalculator - Fianacial Module Taxe - countImpot" +" euros total paye des  impots paye " );
+        System.out.println("NOM_FICHE : FrenchRenueTaxCalculator - Fianacial Module Taxe - le pourcentage d'impot paye en total "+((countImpot/taxableBase)*100) +"%");
 
 
 
