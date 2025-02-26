@@ -8,8 +8,8 @@ public class FrenchRevenueTaxCalculator {
         double taxableBaseReduced = taxableNetSalary - (taxableNetSalary * 0.10);
         double taxableBase = taxableBaseReduced;
         double trancheImposable = 0;
-        double soldImpot =0 ;
-        double countImpot= 0;
+        double soldImpot = 0 ;
+        double countImpot = 0;
 
 /**
          * De 0€ à 11.294€ _______ : 0%
